@@ -632,12 +632,36 @@ include $(srctree)/arch/$(SRCARCH)/Makefile
 
 KBUILD_CFLAGS	+= $(call cc-option,-fno-delete-null-pointer-checks,)
 KBUILD_CFLAGS	+= $(call cc-disable-warning,frame-address,)
+KBUILD_CFLAGS	+= $(call cc-disable-warning, misleading-indentation)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, format-truncation)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, format-overflow)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, int-in-bool-context)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, attribute-alias)
 KBUILD_CFLAGS	+= $(call cc-option,-fno-PIE)
 KBUILD_AFLAGS	+= $(call cc-option,-fno-PIE)
+
+# Disable maybe-uninitialized warnings
+KBUILD_CFLAGS  += $(call cc-disable-warning,maybe-uninitialized,)
+
+# Disable unused-constant-variable warnings
+KBUILD_CFLAGS  += $(call cc-disable-warning,unused-const-variable,)
+
+# Needed to unbreak GCC 7.x and above
+KBUILD_CFLAGS   += $(call cc-option,-fno-store-merging,)
+
+# Disable format-truncation warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,format-truncation,)
+
+# Disable GCC 8.x warnings
+KBUILD_CFLAGS  += $(call cc-disable-warning, attribute-alias)
+KBUILD_CFLAGS  += $(call cc-disable-warning, sizeof-pointer-memaccess)
+KBUILD_CFLAGS  += $(call cc-disable-warning, packed-not-aligned)
+KBUILD_CFLAGS  += $(call cc-disable-warning, array-bounds)
+KBUILD_CFLAGS  += $(call cc-disable-warning, format-overflow)
+KBUILD_CFLAGS  += $(call cc-disable-warning, stringop-overflow)
+
+# Disable CLANG 8.x warnings
+KBUILD_CFLAGS  += $(call cc-disable-warning, return-stack-address)
 
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= $(call cc-option,-Oz,-Os) $(call cc-disable-warning,maybe-uninitialized,)
