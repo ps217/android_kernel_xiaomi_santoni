@@ -57,7 +57,7 @@ export IMAGE="${OUTDIR}/arch/${ARCH}/boot/Image.gz-dtb";
 export CC=$HOME/clang/bin/clang
 export CLANG_VERSION=$($CC --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
 export CLANG_TRIPLE=aarch64-linux-gnu-
-export CLANG_LD_PATH=$HOME/clang/lib
+export CLANG_LD_PATH=$HOME/clang/lib64
 export LLVM_DIS=$HOME/clang/bin/llvm-dis
 
 export MAKE_TYPE="Treble"
@@ -110,7 +110,7 @@ Build Scheduled for $KERNELNAME Kernel (Treble)" -d chat_id=$CHAT_ID
 ${MAKE} $DEFCONFIG;
 START=$(date +"%s");
 echo -e "Using ${JOBS} threads to compile"
-${MAKE} -j${JOBS};
+${MAKE} -j${JOBS} CC=$CC CLANG_TRIPLE=$CLANG_TRIPLE CROSS_COMPILE=$CROSS_COMPILE;
 exitCode="$?";
 END=$(date +"%s")
 DIFF=$(($END - $START))
