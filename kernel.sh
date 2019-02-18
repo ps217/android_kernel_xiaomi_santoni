@@ -105,7 +105,7 @@ if [[ "$@" =~ "clean" ]]; then
 fi
 
 # curl -s -X POST https://api.telegram.org/bot$BOT_API_KEY/sendSticker -d sticker="CAADBQADFgADx8M3D8ZwwIWZRWcwAg"  -d chat_id=$CHAT_ID
-curl -s -X POST https://api.telegram.org/bot$BOT_API_KEY/sendMessage -d text="#ps217
+curl -s -X POST https://api.telegram.org/bot$BOT_API_KEY/sendMessage -d text="
 Build Scheduled for $KERNELNAME Kernel (Treble)" -d chat_id=$CHAT_ID
 ${MAKE} $DEFCONFIG;
 START=$(date +"%s");
@@ -119,7 +119,7 @@ echo -e "Build took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds.";
 
 if [[ ! -f "${IMAGE}" ]]; then
     echo -e "Build failed :P";
-    curl -s -X POST https://api.telegram.org/bot$BOT_API_KEY/sendMessage -d text="$KERNELNAME Kernel stopped due to an error, @vvreddy @infinitEplus Please take a Look" -d chat_id="-1001406849717"
+    curl -s -X POST https://api.telegram.org/bot$BOT_API_KEY/sendMessage -d text="$KERNELNAME Kernel stopped due to an error, Please take a Look" -d chat_id="-1001316778556"
     # curl -s -X POST https://api.telegram.org/bot$BOT_API_KEY/sendSticker -d sticker="CAADBQADHwADx8M3DyJi1SWaX6BdAg"  -d chat_id="-1001263315920"
     success=false;
     exit 1;
@@ -151,7 +151,7 @@ compatible="AOSP PIE- Treble ONLY"
 time="Build took $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
 
 # curl -s -X POST https://api.telegram.org/bot$BOT_API_KEY/sendMessage -d text="$(git log --pretty=format:'%h : %s' -5)" -d chat_id=$CHAT_ID
-curl -F chat_id="-1001263315920" -F document=@"${ZIP_DIR}/$ZIPNAME" -F caption="$message $compatible $time" https://api.telegram.org/bot$BOT_API_KEY/sendDocument
+curl -F chat_id="-1001316778556" -F document=@"${ZIP_DIR}/$ZIPNAME" -F caption="$message $compatible $time" https://api.telegram.org/bot$BOT_API_KEY/sendDocument
 
 
 curl -s -X POST https://api.telegram.org/bot$BOT_API_KEY/sendMessage -d text="
