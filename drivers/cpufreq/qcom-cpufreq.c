@@ -31,6 +31,12 @@
 
 static DEFINE_MUTEX(l2bw_lock);
 
+// AP: Default startup frequencies
+#define CONFIG_CPU_FREQ_MIN_CLUSTER1	960000
+#define CONFIG_CPU_FREQ_MAX_CLUSTER1	1401000
+#define CONFIG_CPU_FREQ_MIN_CLUSTER2	768000
+#define CONFIG_CPU_FREQ_MAX_CLUSTER2	1094400
+
 static struct clk *cpu_clk[NR_CPUS];
 static struct clk *l2_clk;
 static DEFINE_PER_CPU(struct cpufreq_frequency_table *, freq_table);
