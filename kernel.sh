@@ -57,7 +57,7 @@ export IMAGE="${OUTDIR}/arch/${ARCH}/boot/Image.gz-dtb";
 export CC=$HOME/clang/bin/clang
 export CLANG_VERSION=$($CC --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
 export CLANG_TRIPLE=aarch64-linux-gnu-
-export CLANG_LD_PATH=$HOME/clang/lib64
+export CLANG_LD_PATH=$HOME/toolchains/dragontc
 export LLVM_DIS=$HOME/clang/bin/llvm-dis
 
 export MAKE_TYPE="Treble"
