@@ -54,7 +54,7 @@ export DEFCONFIG="santoni_defconfig";
 export ZIP_DIR="${HOME}/${KERNELDIR}/files";
 export IMAGE="${OUTDIR}/arch/${ARCH}/boot/Image.gz-dtb";
 
-export CC=$HOME/dragontc/bin/clang
+export CC=$HOME/toolchains/dragontc/bin/clang
 export CLANG_VERSION=$($CC --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
 export CLANG_TRIPLE=aarch64-linux-gnu-
 export CLANG_LD_PATH=$HOME/toolchains/dragontc
