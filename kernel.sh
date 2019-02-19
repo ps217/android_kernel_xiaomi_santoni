@@ -3,7 +3,7 @@
 export TZ="Asia/Kolkata";
 export BOT_API_KEY=605544093:AAGss2_5K8qIi97CW5sJ6XWjT1DomYQUh08
 export CHAT_ID=-1001316778556
-
+export KERNELNAME="NEXUS";
 # Kernel compiling script
 
 function check_toolchain() {
